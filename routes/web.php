@@ -28,10 +28,11 @@ Route::get('/', function () {
 Route::get('/input', 'DataController@adding');
 Auth::routes();
 
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register')->middleware('admin');
-Route::post('register', 'Auth\RegisterController@register')->middleware('admin');
+//Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register')->middleware('admin');
+//Route::post('register', 'Auth\RegisterController@register')->middleware('admin');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
+Route::get('/listofsensors', 'DataController@listofsensors')->middleware('admin');

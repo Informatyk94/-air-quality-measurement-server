@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMeasurementTable extends Migration
+class CreateListofsensorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateMeasurementTable extends Migration
      */
     public function up()
     {
-        Schema::create('measurement', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->float('node');
-            $table->float('ratio');
-            $table->timestamp('email_verified_at')->nullable();
+        Schema::create('listofsensors', function (Blueprint $table) {
+            $table->bigIncrements('node');
+            $table->string('title');
+            $table->string('description');
             $table->timestamps();
         });
     }

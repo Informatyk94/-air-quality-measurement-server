@@ -27,7 +27,6 @@
                     Stacja monitorowania czystości powietrza
                 </a>
 
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -57,9 +56,14 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('register') }}">
-                                        Register new user
-                                    </a>
+                                    @if(auth()->user()->is_admin == 1)
+                                        <a class="dropdown-item" href="{{ route('register') }}">
+                                            Register new user
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('register') }}">
+                                            User management
+                                        </a>
+                                    @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

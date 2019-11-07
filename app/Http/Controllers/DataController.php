@@ -25,8 +25,14 @@ class DataController extends BaseController
 
         if(md5($apikey) ==  env('API_KEY_PRIVATE')){
             DB::table('measurement')->insert([
-                ['concentration' => $concentration, 'ratio' => $ratio, 'created_at' => date("Y-m-d-H:i:s")],
+                ['concentration' => $concentration, 'ratio' => $ratio, $node => 'node', 'created_at' => date("Y-m-d-H:i:s")],
             ]);
         };
+    }
+
+    public function listofsensors(){
+        $listofsensors = DB::select('select * from measurement limit 10');
+            dd($listofsensors);
+        return view('listdata', ['listofsensors' => $listofsensors]);
     }
 }
