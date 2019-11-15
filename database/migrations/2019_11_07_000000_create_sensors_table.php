@@ -13,8 +13,8 @@ class CreateListofsensorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listofsensors', function (Blueprint $table) {
-            $table->bigIncrements('node');
+        Schema::create('sensors', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateListofsensorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('measurement');
+        Schema::dropIfExists('sensors');
     }
 }
