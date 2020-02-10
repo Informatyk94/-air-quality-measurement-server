@@ -46,6 +46,14 @@ class DataController extends BaseController
         return view('measurement', ['sensor' => $data, 'measurment' => $measurment]);
     }
 
+    public function addsensor(){
+        return view('addsensor');
+    }
+
+    public function addsensoraction(Request $request){
+        dd($request);
+    }
+
      public function measurement(Request $request, $id)
      {
          $data = Measurement::where('sensor_id', $id)->select('ratio','created_at')->get();

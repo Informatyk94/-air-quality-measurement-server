@@ -36,8 +36,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
 Route::get('/listofsensors', 'DataController@listofsensors')->name('listofsensors');
+Route::get('/addsensoraction', 'DataController@addsensoraction')->name('addsensoraction');
 
 Route::get('/listofmeasurement/{id}', 'DataController@listofmeasurement')->name('listofmeasurement');
+
+Route::get('/addsensor', 'DataController@addsensor')->name('addsensor');
+
 Route::get('/measurement/{id}', 'DataController@measurement')->name('measurement');
 //Route::get('/measurement/{id}/edit', 'DataController@measurement')->name('measurement');
 //Route::get('/measurement/{id}/delete', 'DataController@measurement')->name('measurement');

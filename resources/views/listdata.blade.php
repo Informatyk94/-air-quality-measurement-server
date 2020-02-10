@@ -33,6 +33,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div>
+                            <a href="/addsensor" type="button" class="btn btn-success">Add sensor</a>
+                        </div>
                     </div>
                 </div>
             </div>
