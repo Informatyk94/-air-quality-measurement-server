@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -64,6 +65,10 @@
                                             User management
                                         </a>
                                     @endif
+                                    <a class="dropdown-item" href="{{route('listofsensors')}}">
+                                        List of sensors
+                                    </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

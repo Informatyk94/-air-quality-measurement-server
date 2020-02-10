@@ -23,11 +23,11 @@
                                         <td>{{$sensor->title}}</td>
                                         <td>{{$sensor->description}}</td>
                                         <th>
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="#" type="button" class="btn btn-info">Measurement</a>
-                                                <a href="#" type="button" class="btn btn-success">Edit</a>
-                                                <a href="#" type="button" class="btn btn-danger">Delete</a>
-                                            </div>
+                                            <a href="/listofmeasurement/{{$sensor->id}}" type="button" class="btn btn-info">Findings</a>
+                                            @if(auth()->user()->is_admin == 1)
+                                                <a href="/edit/{{$sensor->id}}" type="button" class="btn btn-success">Edit</a>
+                                                <a href="/delete/{{$sensor->id}}" type="button" class="btn btn-danger">Delete</a>
+                                            @endif
                                         </th>
                                     </tr>
                                 @endforeach
