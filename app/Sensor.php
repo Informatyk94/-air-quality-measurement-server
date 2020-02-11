@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sensor extends Model
 {
+//    /**
+//     * The attributes that are mass assignable.
+//     *
+//     * @var array
+//     */
+//    protected $fillable = [
+//        'title', 'description', 'id_sensor'
+//    ];
+
     public function measurement(){
         return $this->belongsToMany('App\Measurement')->withTimestamps();
     }

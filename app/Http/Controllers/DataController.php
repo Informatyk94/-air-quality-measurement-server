@@ -37,13 +37,14 @@ class DataController extends BaseController
         return view('listdata', ['listofsensors' => $data]);
     }
 
-    public function listofmeasurement(Request $request, $id){
-        $data = Sensor::find($id);
-        $measurment = Measurement::where('sensor_id', $id)->select('ratio','created_at')->get();
+    public function listofmeasurement(Request $request, $id_sensor){
+//        $data = Sensor::find($id_sensor);
+        $data = Sensor::where('id_sensor', $id_sensor)->get();
+        $measurment = Measurement::where('sensor_id', $id_sensor)->select('ratio','created_at')->get();
         $measurment = $measurment->map(function($element){
             return [(string)$element['created_at'], (string)$element['ratio']];
         });
-        return view('measurement', ['sensor' => $data, 'measurment' => $measurment]);
+        return view('measurement', ['sensor' => $data[0], 'measurment' => $measurment]);
     }
 
     public function addsensor(){

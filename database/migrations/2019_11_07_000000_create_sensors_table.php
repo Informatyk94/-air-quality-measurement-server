@@ -17,6 +17,7 @@ class CreateListofsensorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
+            $table->integetr('id_sensor');
             $table->timestamps();
         });
     }
