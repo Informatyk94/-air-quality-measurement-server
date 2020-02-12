@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">List of sensors</div>
                     <div class="card-body">
@@ -25,8 +25,8 @@
                                         <th>
                                             <a href="/listofmeasurement/{{$sensor->id_sensor}}" type="button" class="btn btn-info">Findings</a>
                                             @if(auth()->user()->is_admin == 1)
-                                                <a href="/edit/{{$sensor->id}}" type="button" class="btn btn-success">Edit</a>
-                                                <a href="/delete/{{$sensor->id}}" type="button" class="btn btn-danger">Delete</a>
+                                                <a href="/editsensor/{{$sensor->id}}" type="button" class="btn btn-success">Edit</a>
+                                                <a href="/deletesensor/{{$sensor->id}}" type="button" class="btn btn-danger">Delete</a>
                                             @endif
                                         </th>
                                     </tr>

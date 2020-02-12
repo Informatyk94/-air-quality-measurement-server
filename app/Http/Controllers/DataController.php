@@ -16,6 +16,8 @@ class DataController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+
+    //API ADD MEASUREMENT TO SENSOR
     public function adding(Request $request)
     {
         $array = $request->all();
@@ -32,35 +34,68 @@ class DataController extends BaseController
         };
     }
 
+    //LIST OF SENSORS
     public function listofsensors(){
         $data = Sensor::all();
         return view('listdata', ['listofsensors' => $data]);
     }
 
+    //MEASUREMENTS ONE SENSOR
     public function listofmeasurement(Request $request, $id_sensor){
-//        $data = Sensor::find($id_sensor);
         $data = Sensor::where('id_sensor', $id_sensor)->get();
-        $measurment = Measurement::where('sensor_id', $id_sensor)->select('ratio','created_at')->get();
+        $measurment = Measurement::where('sensor_id', $id_sensor)->select('ratio','concentration','created_at')->get();
         $measurment = $measurment->map(function($element){
-            return [(string)$element['created_at'], (string)$element['ratio']];
+            return [(string)$element['created_at'], (string)$element['concentration'], (string)$element['ratio']];
         });
         return view('measurement', ['sensor' => $data[0], 'measurment' => $measurment]);
     }
 
+    //LINK TO FORM ADD NEW SENSOR
     public function addsensor(){
         return view('addsensor');
     }
 
-    public function addsensoraction(Request $request){
-        dd($request);
+    //LINK TO EDIT FORM
+    public function editsensor($id){
+        $sensor = Sensor::find($id);
+        return view('editsensor',['sensor' => $sensor]);
     }
 
+    //ACTION FORM EDIT SENSOR
+    public function editsensoraction(Request $request, $id){
+        $sensor = Sensor::find($id);
+        $sensor->title = $request["title"];
+        $sensor->description = $request["description"];
+        $sensor->id_sensor = $request["id_sensor"];
+        $sensor->save();
+        return $this->listofsensors();
+    }
+
+    //ACTION FORM ADD SENSOR
+    public function addsensoraction(Request $request){
+        $sensor = new Sensor;
+        $sensor->title = $request["title"];
+        $sensor->description = $request["description"];
+        $sensor->id_sensor = $request["id_sensor"];
+        $sensor->save();
+        return $this->listofsensors();
+    }
+
+
+    //FOR API
      public function measurement(Request $request, $id)
      {
-         $data = Measurement::where('sensor_id', $id)->select('ratio','created_at')->get();
+         $data = Measurement::where('sensor_id', $id)->select('concentration','ratio','created_at')->get();
          $data = $data->map(function($element){
-             return [$element['created_at'], $element['ratio']];
+             return [$element['created_at'], $element['concentration'] ,$element['ratio']];
          });
          return $data;
      }
+
+     //DELETE SENSOR
+    public function deletesensor($id){
+        $sensor = Sensor::find($id);
+        $sensor->delete();
+        return $this->listofsensors();
+    }
 }

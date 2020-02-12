@@ -5,13 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header">Home</div>
 
                     <div class="card-body">
+                        You have
                         @if(auth()->user()->is_admin == 1)
-                            <a href="{{url('admin/routes')}}">Admin</a>
+                            full access.
+{{--                            <a href="{{url('admin/routes')}}">Admin</a>--}}
                         @else
-                            <div class=”panel-heading”>Normal User</div>
+                            limited access.
+{{--                            <div class=”panel-heading”>Normal User</div>--}}
                         @endif
                     </div>
                 </div>

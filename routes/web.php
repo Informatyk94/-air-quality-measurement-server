@@ -40,9 +40,14 @@ Route::get('/addsensoraction', 'DataController@addsensoraction')->name('addsenso
 
 Route::get('/listofmeasurement/{id}', 'DataController@listofmeasurement')->name('listofmeasurement');
 
+Route::get('/editsensor/{id}', 'DataController@editsensor')->name('editsensor');
+Route::get('/editsensoraction/{id}', 'DataController@editsensoraction')->name('editsensoraction');
+
 Route::get('/addsensor', 'DataController@addsensor')->name('addsensor');
 
 Route::get('/measurement/{id}', 'DataController@measurement')->name('measurement');
+
+Route::get('/deletesensor/{id}', 'DataController@deletesensor')->name('deletesensor');
 //Route::get('/measurement/{id}/edit', 'DataController@measurement')->name('measurement');
 //Route::get('/measurement/{id}/delete', 'DataController@measurement')->name('measurement');
 
