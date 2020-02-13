@@ -33,9 +33,11 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div>
-                            <a href="/addsensor" type="button" class="btn btn-success">Add sensor</a>
-                        </div>
+                        @if(auth()->user()->is_admin == 1)
+                            <div>
+                                <a href="/addsensor" type="button" class="btn btn-success">Add sensor</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

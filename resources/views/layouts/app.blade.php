@@ -61,7 +61,7 @@
                                         <a class="dropdown-item" href="{{ route('register') }}">
                                             Register new user
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('register') }}">
+                                        <a class="dropdown-item" href="{{ route('management') }}">
                                             User management
                                         </a>
                                     @endif
